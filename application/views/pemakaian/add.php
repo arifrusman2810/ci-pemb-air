@@ -53,16 +53,16 @@
               <input type="text" name="tahun" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="">Meteran Bulan Lalu</label>
+              <label for="">Meteran Bulan Lalu (M<sup>3</sup>)</label>
               <input type="text" name="awal" id="awal" class="form-control" required readonly>
             </div>
             <div class="form-group">
-              <label for="">Meteran Bulan Ini *</label>
+              <label for="">Meteran Bulan Ini (M<sup>3</sup>)*</label>
               <input type="text" name="akhir" id="akhir" class="form-control" required>
               <small class="text-danger"><i>Inputan harus lebih besar dari meteran bulan lalu!</i></small>
             </div>
             <div class="form-group">
-              <label for="">Pemakaian (Bulan ini - Bulan lalu)</label>
+              <label for="">Pemakaian (Bulan ini - Bulan lalu) (M<sup>3</sup>)</label>
               <input type="text" name="total" id="total" class="form-control" required readonly>
             </div>
 

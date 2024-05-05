@@ -27,8 +27,8 @@
             <th>No</th>
             <th>ID | Nama Pelanggan</th>
             <th>Bulan - Tahun</th>
-            <th>Meter Awal (M<sup>3</sup>)</th>
-            <th>Meter Akhir (M<sup>3</sup>)</th>
+            <th>Meter Awal</th>
+            <th>Meter Akhir</th>
             <th>Status</th>
             <th>Aksi</th>
           </tr>
@@ -42,8 +42,8 @@
             <td><?= $no++ ?></td>
             <td><?= $data->id_pelanggan.' | '.$data->nama_pelanggan ?></td>
             <td><?= $data->nama_bulan.' - '.$data->tahun ?></td>
-            <td><?= $data->awal ?></td>
-            <td><?= $data->akhir ?></td>
+            <td><?= $data->awal ?> M<sup>3</sup></td>
+            <td><?= $data->akhir ?> M<sup>3</sup></td>
             <td><?= $data->status == 'Lunas' ? "<span class='label label-primary'>Lunas</span>" : "<span class='label label-warning'>Belum Bayar</span>"?></td>
             <td>
               <a href="<?= site_url('pemakaian/delete/'.$data->id_pakai) ?>" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
