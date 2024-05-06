@@ -41,7 +41,7 @@
             <td><?= $data->nama_bulan ?> - <?= $data->tahun ?></td>
             <td><?= $data->pakai ?></td>
             <td><?= number_format($data->tagihan, 0, ',', '.') ?></td>
-            <td><?= date('d-m-Y', strtotime($data->tgl_bayar)) ?></td>
+            <td><?= date('d-M-Y', strtotime($data->tgl_bayar)) ?></td>
             <td>
               <a href="<?= site_url('laporan/cetak/'.$data->id_tagihan) ?>" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Cetak</a>
             </td>

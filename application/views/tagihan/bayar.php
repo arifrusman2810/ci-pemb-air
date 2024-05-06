@@ -52,7 +52,7 @@
               <?php if($tagihan->status == 'Belum Bayar'): ?>
 
                 <div class="form-group">
-                  <input type='text' class="form-control" name="id_tagihan" value="<?= $tagihan->id_tagihan; ?>" readonly/>
+                  <input type='hidden' class="form-control" name="id_tagihan" value="<?= $tagihan->id_tagihan; ?>" readonly/>
                 </div>
                 <div class="form-group">
                   <input type='hidden' class="form-control" name="tagih" id="tagih" value="<?= $tagihan->tagihan; ?>" readonly/>

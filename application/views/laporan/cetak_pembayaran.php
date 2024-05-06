@@ -22,7 +22,7 @@
 					<td>Pemakaian </td>
 					<td>:</td>
 					<td>
-						<?= $data->pakai; ?>M
+						<?= $data->pakai; ?> M
 						<sup> 3</sup>
 					</td>
 			</tr>
@@ -38,7 +38,7 @@
 					<td>Tagihan</td>
 					<td>:</td>
 					<td>
-						<?= $data->tagihan; ?>
+						Rp. <?= number_format($data->tagihan, 0, ',', '.'); ?>,-
 					</td>
 					<td>
 			</tr>
@@ -68,14 +68,14 @@
 				<td>Tgl Pembayaran</td>
 				<td>:</td>
 				<td>
-					<?=  $data->tgl_bayar; ?>
+					<?= date('d-M-Y', strtotime($data->tgl_bayar)) ?>
 				</td>
 			</tr>
 			<tr>
 				<td>Uang Bayar</td>
 				<td>:</td>
 				<td>
-					<?= $data->uang_bayar; ?>
+					Rp. <?= number_format($data->uang_bayar, 0, ',', '.'); ?>,-
 				</td>
 				<td>
 					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Struk Ini Adalah Bukti Pembayaran Yang Sah.
@@ -86,7 +86,7 @@
 			<td>Uang Kembali</td>
 			<td>:</td>
 			<td>
-				<?= $data->kembali; ?>
+				Rp. <?= number_format($data->kembali, 0, ',', '.'); ?>,-
 			</td>
 
 		</tbody>

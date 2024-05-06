@@ -26,7 +26,7 @@
           <tr>
             <th>No</th>
             <th>Layanan</th>
-            <th>Tarif</th>
+            <th>Tarif (Rp)</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -38,7 +38,7 @@
           <tr>
             <td><?= $no++ ?></td>
             <td><?= $data->layanan ?></td>
-            <td><?= $data->tarif ?></td>
+            <td><?= number_format($data->tarif, 0, ',', '.') ?></td>
             <td>
               <a href="<?= site_url('layanan/edit/'.$data->id_layanan); ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
               <a href="<?= site_url('layanan/delete/'.$data->id_layanan); ?>" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>

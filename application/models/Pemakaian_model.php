@@ -19,12 +19,15 @@ class Pemakaian_model extends CI_Model {
     return $pemakaian;
   }
 
-  public function get(){
-    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_bulan.nama_bulan, tb_tagihan.status');
+  public function get($id = null){
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_bulan.id_bulan, tb_bulan.nama_bulan, tb_tagihan.status');
     $this->db->from('tb_pelanggan');
     $this->db->join('tb_pakai', 'tb_pelanggan.id_pelanggan = tb_pakai.id_pelanggan');
     $this->db->join('tb_tagihan', 'tb_pakai.id_pakai = tb_tagihan.id_pakai');
     $this->db->join('tb_bulan', 'tb_pakai.bulan = tb_bulan.id_bulan');
+    if($id != null){
+      $this->db->where('tb_pakai.id_pakai', $id);
+    }
     $this->db->order_by('tb_bulan.id_bulan', 'DESC');
     return $this->db->get();
   }

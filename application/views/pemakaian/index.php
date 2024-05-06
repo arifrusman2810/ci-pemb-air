@@ -44,7 +44,7 @@
             <td><?= $data->nama_bulan.' - '.$data->tahun ?></td>
             <td><?= $data->awal ?> M<sup>3</sup></td>
             <td><?= $data->akhir ?> M<sup>3</sup></td>
-            <td><?= $data->status == 'Lunas' ? "<span class='label label-primary'>Lunas</span>" : "<span class='label label-warning'>Belum Bayar</span>"?></td>
+            <td><?= $data->status == 'Lunas' ? "<span class='label label-primary'>Lunas</span>" : "<span class='label label-danger'>Belum Bayar</span>"?></td>
             <td>
               <a href="<?= site_url('pemakaian/delete/'.$data->id_pakai) ?>" onclick="return confirm('Yakin hapus?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
             </td>

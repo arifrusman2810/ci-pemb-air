@@ -48,6 +48,17 @@ class Pemakaian extends CI_Controller {
     }
   }
 
+  public function edit($id){
+    $data['pemakaian'] = $this->pemakaian_model->get($id)->row();
+    $data['pelanggan'] = $this->pelanggan_model->get()->result();
+    $data['bulan'] = $this->pemakaian_model->get_bulan()->result();
+    // print_r($data['pemakaian']);
+    // die;
+    $this->load->view('templates/header');
+    $this->load->view('pemakaian/edit', $data);
+    $this->load->view('templates/footer');
+  }
+
   public function delete($id){
     $this->pemakaian_model->delete($id);
     if($this->db->affected_rows()){

@@ -147,7 +147,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= site_url('laporan') ?>"><i class="fa fa-circle-o"></i> Laporan Pemasukan</a></li>
+            <li><a href="<?= site_url('laporan/laporanMasuk') ?>"><i class="fa fa-circle-o"></i> Laporan Pemasukan</a></li>
           </ul>
         </li>
         <li><a href="<?= site_url('auth/logout') ?>" onclick="return confirm('Anda akan logout...')"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>

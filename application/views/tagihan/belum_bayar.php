@@ -39,7 +39,7 @@
             <td><?= $data->id_pelanggan ?> | <?= $data->nama_pelanggan ?></td>
             <td><?= $data->nama_bulan ?> - <?= $data->tahun ?></td>
             <td><?= $data->pakai ?></td>
-            <td><?= $data->tagihan ?></td>
+            <td><?= number_format($data->tagihan, 0, ',', '.') ?></td>
             <td>
               <a href="<?= site_url('tagihan/bayar/'.$data->id_tagihan) ?>" class="btn btn-primary btn-xs"><i class="fa fa-send"></i> Bayar</a>
             </td>
