@@ -18,14 +18,13 @@
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3>150</h3>
-
-          <p>New Orders</p>
+          <h3><?= $jml_pelanggan ?></h3>
+          <p>pelanggan</p>
         </div>
         <div class="icon">
-          <i class="ion ion-bag"></i>
+          <i class="ion ion-person"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('pelanggan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -33,9 +32,8 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-          <p>Bounce Rate</p>
+          <h3><?= $jml_tagihan ?></h3>
+          <p>Data Tagihan</p>
         </div>
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
@@ -48,14 +46,13 @@
       <!-- small box -->
       <div class="small-box bg-yellow">
         <div class="inner">
-          <h3>44</h3>
-
-          <p>User Registrations</p>
+          <h3><?= $jml_lunas ?></h3>
+          <p>Data Tagihan (Lunas)</p>
         </div>
         <div class="icon">
-          <i class="ion ion-person-add"></i>
+          <i class="ion ion-cash"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('tagihan/lunas') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -63,14 +60,13 @@
       <!-- small box -->
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>65</h3>
-
-          <p>Unique Visitors</p>
+          <h3><?= $jml_belumBayar ?></h3>
+          <p>Data Tagihan (Belum Bayar)</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?= site_url('tagihan/belumBayar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
