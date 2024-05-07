@@ -51,6 +51,15 @@
               </select>
             </div>
             <div class="form-group">
+              <label for="">Username *</label>
+              <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="">Password *</label>
+              <input type="password" name="password" value="1234" class="form-control" required readonly>
+              <small class="text-danger"><i>Password default 1234</i></small>
+            </div>
+            <div class="form-group">
               <button type="submit" name="submit" class="btn btn-success btn-flat"><i class="fa fa-paper-plane"></i> Save</button>
               <button type="reset" class="btn btn-flat">Reset</button>
             </div>

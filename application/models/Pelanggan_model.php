@@ -32,7 +32,9 @@ class Pelanggan_model extends CI_Model {
       'alamat'         => $post['alamat'],
       'no_hp'          => $post['phone'],
       'status'         => 'Aktif',
-      'id_layanan'     => $post['layanan']
+      'id_layanan'     => $post['layanan'],
+      'username'       => $post['username'],
+      'password'       => sha1($post['password']),
     );
     $this->db->insert('tb_pelanggan', $params);
   }
@@ -44,7 +46,9 @@ class Pelanggan_model extends CI_Model {
       'alamat'         => $post['alamat'],
       'no_hp'          => $post['phone'],
       'status'         => 'Aktif',
-      'id_layanan'     => $post['layanan']
+      'id_layanan'     => $post['layanan'],
+      'username'       => $post['username'],
+      'password'       => sha1($post['password']),
     );
     $id = $post['id'];
     $this->db->where('id_pelanggan', $id);
