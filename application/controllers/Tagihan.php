@@ -53,6 +53,44 @@ class Tagihan extends CI_Controller {
     $this->load->view('tagihan/lunas', $data);
     $this->load->view('templates/footer');
   }
+  
+  public function tungguKonfirm(){
+    $data['tagihan'] = $this->tagihan_model->get_tunggu_konfirm()->result();
+    $this->load->view('templates/header');
+    $this->load->view('tagihan/tunggu_konfirm', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function konfirm($id){
+    $data['tagihan'] = $this->tagihan_model->get_tunggu_konfirm($id)->row();
+    // print_r($data['tagihan']);
+    // die;
+    $this->load->view('templates/header');
+    $this->load->view('tagihan/konfirm', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function konfirmProcess(){
+    $post = $this->input->post(null, TRUE);
+    // print_r($post);
+    // die;
+    $this->pembayaran_model->konfirm($post);
+
+    if($this->db->affected_rows()){
+      echo
+        "<script>
+          alert('Konfirmasi pembayaran berhasil');
+          window.location = '".site_url('tagihan/lunas')."'
+        </script>";
+    }
+    else{
+      echo
+        "<script>
+          alert('Konfirmasi gagal!');
+          window.location = '".site_url('tagihan/tungguKonfirm')."'
+        </script>";
+    }
+  }
 
 
 }

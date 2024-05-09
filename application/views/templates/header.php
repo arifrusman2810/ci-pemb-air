@@ -111,6 +111,7 @@
           <ul class="treeview-menu">
             <li><a href="<?= site_url('tagihan/belumBayar') ?>"><i class="fa fa-circle-o"></i> Belum Bayar</a></li>
             <li><a href="<?= site_url('tagihan/lunas') ?>"><i class="fa fa-circle-o"></i> Lunas</a></li>
+            <li><a href="<?= site_url('tagihan/tungguKonfirm') ?>"><i class="fa fa-circle-o"></i> Menunggu Konfirmasi</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -126,7 +127,7 @@
             <li><a href="<?= site_url('layanan') ?>"><i class="fa fa-circle-o"></i> Layanan Air</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-gear"></i> <span>Pengaturan</span>
             <span class="pull-right-container">
@@ -136,7 +137,7 @@
           <ul class="treeview-menu">
             <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Info Pelanggan</a></li>
           </ul>
-        </li>
+        </li> -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Laporan</span>

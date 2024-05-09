@@ -27,7 +27,8 @@
     </div>
 
     <div class="login-box-body">
-      <p class="login-box-msg">Login Pelanggan</p>
+      <h4 class="login-box-msg text-danger">Login Pelanggan</h4>
+      <hr style="margin-top:0">
       <form action="<?= site_url('customer/auth/process') ?>" method="post">
         <div class="form-group has-feedback">
           <input type="text" class="form-control" name="username" placeholder="Username">
