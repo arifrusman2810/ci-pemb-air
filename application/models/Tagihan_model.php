@@ -68,6 +68,58 @@ class Tagihan_model extends CI_Model {
   }
 
 
+  // ================================================================================
+  // Model untuk customer
+  public function get_user_belum_bayar($id){
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_pakai.pakai, tb_bulan.nama_bulan');
+    $this->db->from('tb_pelanggan');
+    $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
+    $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
+    $this->db->join('tb_bulan', 'tb_bulan.id_bulan = tb_pakai.bulan');
+    $this->db->where('tb_tagihan.status', 'Belum Bayar');
+    $this->db->where('tb_pelanggan.id_pelanggan', $id);
+    $this->db->order_by('tahun', 'DESC');
+    $this->db->order_by('id_bulan', 'DESC');
+    return $this->db->get();
+  }
+
+  public function get_user_lunas($id){
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_pakai.pakai, tb_bulan.nama_bulan, tb_pembayaran.tgl_bayar');
+    $this->db->from('tb_pelanggan');
+    $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
+    $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
+    $this->db->join('tb_bulan', 'tb_bulan.id_bulan = tb_pakai.bulan');
+    $this->db->join('tb_pembayaran', 'tb_pembayaran.id_tagihan = tb_tagihan.id_tagihan');
+    $this->db->where('tb_tagihan.status', 'Lunas');
+    $this->db->where('tb_pelanggan.id_pelanggan', $id);
+    $this->db->order_by('tahun', 'DESC');
+    $this->db->order_by('id_bulan', 'DESC');
+    return $this->db->get();
+  }
+  
+  public function get_user_tungguKonfirm($id){
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_pakai.pakai, tb_bulan.nama_bulan');
+    $this->db->from('tb_pelanggan');
+    $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
+    $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
+    $this->db->join('tb_bulan', 'tb_bulan.id_bulan = tb_pakai.bulan');
+    $this->db->where('tb_tagihan.status', 'Menunggu Konfirmasi');
+    $this->db->where('tb_pelanggan.id_pelanggan', $id);
+    $this->db->order_by('tahun', 'DESC');
+    $this->db->order_by('id_bulan', 'DESC');
+    return $this->db->get();
+  }
+
+  public function transfer($post){
+    $params = array(
+      'status' => 'Menunggu Konfirmasi',
+      'foto'   => $post['image'],
+    );
+    $id = $post['id_tagihan'];
+    $this->db->update('tb_tagihan', $params, ['id_tagihan' => $id]);
+  }
+
+
 
 
 

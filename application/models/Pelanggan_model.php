@@ -60,5 +60,13 @@ class Pelanggan_model extends CI_Model {
     $this->db->delete('tb_pelanggan');
   }
 
+  public function login($post){
+    $this->db->select('*');
+    $this->db->from('tb_pelanggan');
+    $this->db->where('username', $post['username']);
+    $this->db->where('password', sha1($post['password']));
+    return $this->db->get();
+  }
+
 
 }       
