@@ -27,7 +27,7 @@
     <!-- ./col -->
     <div class="col-lg-6 col-xs-6">
       <!-- small box -->
-      <div class="small-box bg-yellow">
+      <!-- <div class="small-box bg-yellow">
         <div class="inner">
           <h3>123</h3>
           <p>Data Tagihan (Lunas)</p>
@@ -35,13 +35,13 @@
         <div class="icon">
           <i class="ion ion-cash"></i>
         </div>
-        <a href="<?= site_url('tagihan/lunas') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div> -->
     </div>
     <!-- ./col -->
     <div class="col-lg-6 col-xs-6">
       <!-- small box -->
-      <div class="small-box bg-red">
+      <!-- <div class="small-box bg-red">
         <div class="inner">
           <h3>123</h3>
           <p>Data Tagihan (Belum Bayar)</p>
@@ -49,8 +49,8 @@
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="<?= site_url('tagihan/belumBayar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div> -->
     </div>
     <!-- ./col -->
   </div>

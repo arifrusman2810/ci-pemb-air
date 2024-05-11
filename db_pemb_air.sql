@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2024 at 02:26 AM
+-- Generation Time: May 10, 2024 at 05:36 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.24
 
@@ -110,12 +110,13 @@ CREATE TABLE `tb_pakai` (
 --
 
 INSERT INTO `tb_pakai` (`id_pakai`, `id_pelanggan`, `bulan`, `tahun`, `awal`, `akhir`, `pakai`) VALUES
-('TR2001080001', 'P001', 'A', '2020', 0, 10, 0),
-('TR2001080004', 'P004', 'A', '2020', 0, 0, 0),
-('TR2002080002', 'P001', 'B', '2020', 10, 15, 5),
-('TR2002080005', 'P004', 'B', '2020', 0, 5, 5),
-('TR2003080003', 'P001', 'C', '2020', 15, 30, 15),
-('TR2003080006', 'P004', 'C', '2020', 5, 12, 7);
+('TR2405090001', 'P001', 'A', '2023', 0, 20, 20),
+('TR2405090002', 'P002', 'A', '2023', 0, 22, 22),
+('TR2405090003', 'P003', 'A', '2023', 0, 32, 32),
+('TR2405090004', 'P004', 'A', '2023', 0, 25, 25),
+('TR2405090005', 'P007', 'A', '2023', 0, 22, 22),
+('TR2405090006', 'P008', 'A', '2023', 0, 20, 20),
+('TR2405090007', 'P001', 'B', '2023', 20, 40, 20);
 
 -- --------------------------------------------------------
 
@@ -129,19 +130,22 @@ CREATE TABLE `tb_pelanggan` (
   `alamat` varchar(40) NOT NULL,
   `no_hp` char(15) NOT NULL,
   `status` char(10) NOT NULL DEFAULT 'Aktif',
-  `id_layanan` int(11) NOT NULL
+  `id_layanan` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_pelanggan`
 --
 
-INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `no_hp`, `status`, `id_layanan`) VALUES
-('P001', 'Andi', 'semarang', '085878526041', 'Aktif', 1),
-('P002', 'Budi', 'semarang', '085878526042', 'Aktif', 1),
-('P003', 'Candra', 'pati', '123', 'Aktif', 1),
-('P004', 'Dedi', 'semarang', '087789987654', 'Aktif', 1),
-('P007', 'Jarvis', 'Kamulan', '0567545', 'Aktif', 2);
+INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `no_hp`, `status`, `id_layanan`, `username`, `password`) VALUES
+('P001', 'Andi', 'semarang', 'andi123', 'Aktif', 1, 'andi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
+('P002', 'Budi', 'semarang', '085878526042', 'Aktif', 1, 'budi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
+('P003', 'Candra', 'pati', '123', 'Aktif', 1, 'candra', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
+('P004', 'Dedi', 'semarang', '087789987654', 'Aktif', 1, 'dedi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
+('P007', 'Jarvis', 'Kamulan', '0567545', 'Aktif', 2, 'jarvis', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
+('P008', 'Friday', 'Kudus', '324343', 'Aktif', 1, 'friday123', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
 
 -- --------------------------------------------------------
 
@@ -161,9 +165,12 @@ CREATE TABLE `tb_pembayaran` (
 --
 
 INSERT INTO `tb_pembayaran` (`id_tagihan`, `tgl_bayar`, `uang_bayar`, `kembali`) VALUES
-(68, '2020-06-05', 0, 0),
-(69, '2020-06-05', 10000, 2500),
-(72, '2020-06-05', 10000, 2500);
+(80, '2024-05-09', 30000, 0),
+(79, '2024-05-09', 50000, 6000),
+(77, '2024-05-09', 50000, 2000),
+(75, '2024-05-09', 30000, 0),
+(81, '2024-05-09', 50000, 20000),
+(76, '2024-05-09', 33000, 0);
 
 -- --------------------------------------------------------
 
@@ -175,20 +182,22 @@ CREATE TABLE `tb_tagihan` (
   `id_tagihan` int(11) NOT NULL,
   `id_pakai` varchar(50) NOT NULL,
   `tagihan` int(11) NOT NULL,
-  `status` char(12) NOT NULL DEFAULT 'Belum Bayar'
+  `status` char(50) NOT NULL DEFAULT 'Belum Bayar',
+  `foto` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_tagihan`
 --
 
-INSERT INTO `tb_tagihan` (`id_tagihan`, `id_pakai`, `tagihan`, `status`) VALUES
-(68, 'TR2001080001', 0, 'Lunas'),
-(69, 'TR2002080002', 7500, 'Lunas'),
-(70, 'TR2003080003', 22500, 'Belum Bayar'),
-(71, 'TR2001080004', 0, 'Belum Bayar'),
-(72, 'TR2002080005', 7500, 'Lunas'),
-(73, 'TR2003080006', 10500, 'Belum Bayar');
+INSERT INTO `tb_tagihan` (`id_tagihan`, `id_pakai`, `tagihan`, `status`, `foto`) VALUES
+(75, 'TR2405090001', 30000, 'Lunas', 'trx240509-28f7303350.jpg'),
+(76, 'TR2405090002', 33000, 'Lunas', 'trx240509-83c39e2c74.jpg'),
+(77, 'TR2405090003', 48000, 'Lunas', ''),
+(78, 'TR2405090004', 37500, 'Belum Bayar', ''),
+(79, 'TR2405090005', 44000, 'Lunas', ''),
+(80, 'TR2405090006', 30000, 'Lunas', ''),
+(81, 'TR2405090007', 30000, 'Lunas', '');
 
 -- --------------------------------------------------------
 
@@ -212,11 +221,7 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id_user`, `nama_user`, `username`, `password`, `level`, `no_hp`, `no_rek`) VALUES
 (1, 'Zainal Arifin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrator', '085878526022', ''),
-(2, 'Arifin Z', 'opt', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Operator', '087789987654', ''),
-(15, 'Andi', 'andi', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Pelanggan', '085878526041', 'P001'),
-(16, 'Budi', 'budi', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Pelanggan', '085878526042', 'P002'),
-(19, 'Candra', 'candra', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Pelanggan', '123', 'P003'),
-(20, 'Dedi', 'dedi', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Pelanggan', '087789987654', 'P004');
+(2, 'Arifin Z', 'opt', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Operator', '087789987654', '');
 
 --
 -- Indexes for dumped tables
@@ -294,13 +299,13 @@ ALTER TABLE `tb_layanan`
 -- AUTO_INCREMENT for table `tb_tagihan`
 --
 ALTER TABLE `tb_tagihan`
-  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

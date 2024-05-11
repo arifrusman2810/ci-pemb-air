@@ -69,7 +69,7 @@ class Tagihan extends CI_Controller {
       echo
         "<script>
           alert('Pembayaran berhasil, menunggu konfirmasi');
-          window.location = '".site_url('customer/tagihan/tunggu_konfirm')."'
+          window.location = '".site_url('customer/tagihan/tungguKonfirm')."'
         </script>";
     }
     else{
