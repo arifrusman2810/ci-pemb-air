@@ -57,8 +57,8 @@
             </div>
             <div class="form-group">
               <label for="">Password</label>
-              <input type="password" name="password" value="1234"  class="form-control" required readonly>
-              <small class="text-danger"><i>Password default 1234</i></small>
+              <input type="password" name="password"  class="form-control">
+              <small class="text-danger"><i>Kosongkan password jika tidak ingin diganti!</i></small>
             </div>
             <div class="form-group">
               <button type="submit" name="submit" class="btn btn-success btn-flat"><i class="fa fa-paper-plane"></i> Save</button>

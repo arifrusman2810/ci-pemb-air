@@ -48,8 +48,12 @@ class Pelanggan_model extends CI_Model {
       'status'         => 'Aktif',
       'id_layanan'     => $post['layanan'],
       'username'       => $post['username'],
-      'password'       => sha1($post['password']),
     );
+    if(!empty($post['password'])){
+      $params = array(
+        'password' => sha1($post['password'])
+      );
+    }
     $id = $post['id'];
     $this->db->where('id_pelanggan', $id);
     $this->db->update('tb_pelanggan', $params);

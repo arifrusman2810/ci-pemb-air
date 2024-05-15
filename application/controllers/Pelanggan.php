@@ -16,29 +16,29 @@ class Pelanggan extends CI_Controller {
     $this->load->view('templates/footer');
   }
 
-  public function set_nonAktif($id){
-    $result = $this->pelanggan_model->set_nonAktif($id);
+  // public function set_nonAktif($id){
+  //   $result = $this->pelanggan_model->set_nonAktif($id);
 
-    if($result = TRUE){
-      echo
-      "<script>
-        alert('Status berhasil diubah');
-        window.location = '" .site_url('pelanggan'). "'
-      </script>";
-    }
-  }
+  //   if($result = TRUE){
+  //     echo
+  //     "<script>
+  //       alert('Status berhasil diubah');
+  //       window.location = '" .site_url('pelanggan'). "'
+  //     </script>";
+  //   }
+  // }
   
-  public function set_Aktif($id){
-    $result = $this->pelanggan_model->set_Aktif($id);
+  // public function set_Aktif($id){
+  //   $result = $this->pelanggan_model->set_Aktif($id);
 
-    if($result = TRUE){
-      echo
-      "<script>
-        alert('Status berhasil diubah');
-        window.location = '" .site_url('pelanggan'). "'
-      </script>";
-    }
-  }
+  //   if($result = TRUE){
+  //     echo
+  //     "<script>
+  //       alert('Status berhasil diubah');
+  //       window.location = '" .site_url('pelanggan'). "'
+  //     </script>";
+  //   }
+  // }
 
   public function add(){
     $data['layanan'] = $this->layanan_model->get()->result();
@@ -77,9 +77,9 @@ class Pelanggan extends CI_Controller {
 
   public function editProcess(){
     $post = $this->input->post(null, TRUE);
-    $id = $post['id'];
     // print_r($post);
     // die;
+    $id = $post['id'];
     $this->pelanggan_model->edit($post);
 
     if($this->db->affected_rows()){
