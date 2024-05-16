@@ -50,23 +50,8 @@
                     </tr>
                   </tbody>
                 </table>
-              </div>
-            </div>
-            <div class="col-md-6">
-            <?php 
-            $id_tagihan = $tagihan->id_tagihan;
-            $query = $this->db->query("SELECT * FROM tb_foto WHERE id_tagihan = '$id_tagihan'");
-            $result = $query->result();
-            foreach($result as $result):
-            ?>
-              <img src="<?= base_url('uploads/'.$result->foto) ?>" alt="" class="img-responsive">
-            <?php endforeach; ?>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <form action="<?= site_url('tagihan/konfirmProcess') ?>" method="POST">
+                <form action="<?= site_url('tagihan/konfirmProcess') ?>" method="POST">
                 <div class="form-group">
                   <input type='hidden' class="form-control" name="id_tagihan" value="<?= $tagihan->id_tagihan; ?>" readonly/>
                 </div>
@@ -110,10 +95,22 @@
                   <a href="<?= site_url('tagihan/tungguKonfirm') ?>" class="btn btn-warning btn-flat"> Kembali</a>
                 </div>
               </form>
+
+
+              </div>
+            </div>
+            <div class="col-md-6">
+            <?php 
+            $id_tagihan = $tagihan->id_tagihan;
+            $query = $this->db->query("SELECT * FROM tb_foto WHERE id_tagihan = '$id_tagihan'");
+            $result = $query->result();
+            foreach($result as $result):
+            ?>
+              <img src="<?= base_url('uploads/'.$result->foto) ?>" alt="" class="img-responsive">
+            <?php endforeach; ?>
             </div>
           </div>
 
-          
         </div>
       </div>
     </div>

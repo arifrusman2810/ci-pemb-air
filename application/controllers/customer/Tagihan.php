@@ -81,5 +81,22 @@ class Tagihan extends CI_Controller {
     }
   }
 
+  public function tolak(){
+    $id = $this->session->userdata('user_id');
+    $data['tagihan'] = $this->tagihan_model->get_user_ditolak($id)->result();
+    // print_r($data['tagihan']);
+    // die;
+    $this->load->view('customer/templates/header');
+    $this->load->view('customer/tagihan/ditolak', $data);
+    $this->load->view('customer/templates/footer');
+  }
+
+  public function bayar2($id){
+    $data['tagihan'] = $this->tagihan_model->get_belum_bayar($id)->row();
+    $this->load->view('customer/templates/header');
+    $this->load->view('customer/tagihan/bayar2', $data);
+    $this->load->view('customer/templates/footer');
+  }
+
 
 }

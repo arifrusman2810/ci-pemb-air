@@ -111,6 +111,7 @@
             <li><a href="<?= site_url('customer/tagihan/belumBayar') ?>"><i class="fa fa-circle-o"></i> Belum Bayar</a></li>
             <li><a href="<?= site_url('customer/tagihan/lunas') ?>"><i class="fa fa-circle-o"></i> Lunas</a></li>
             <li><a href="<?= site_url('customer/tagihan/tungguKonfirm') ?>"><i class="fa fa-circle-o"></i> Menunggu Konfirmasi</a></li>
+            <li><a href="<?= site_url('customer/tagihan/tolak') ?>"><i class="fa fa-circle-o"></i> Pembayaran Ditolak</a></li>
           </ul>
         </li>
         <li><a href="<?= site_url('customer/auth/logout') ?>" onclick="return confirm('Anda akan logout...')"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>

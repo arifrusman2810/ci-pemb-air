@@ -14,9 +14,9 @@
 <section class="content">
   <div class="row">
     <div class="col-md-12">
-      <div class="panel panel-danger">
+      <div class="panel panel-warning">
         <div class="panel-heading">
-          <b>Tagihan Belum Dibayar</b>
+          <b>Pembayaran Ditolak</b>
         </div>
           <div class="panel-body table-responsive">
             <table class="table table-bordered table-striped" id="table1">
@@ -28,6 +28,8 @@
                   <th>Meter Akhir (M<sup>3</sup>)</th>
                   <th>Pemakaian (M<sup>3</sup>)</th>
                   <th>Tagihan (Rp)</th>
+                  <th>Keterangan</th>
+                  <th>Status</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -43,8 +45,12 @@
                   <td><?= $data->akhir ?></td>
                   <td><?= $data->pakai ?></td>
                   <td><?= number_format($data->tagihan, 0, ',', '.') ?></td>
+                  <td><?= $data->keterangan; ?></td>
                   <td>
-                    <a href="<?= site_url('customer/tagihan/bayar/'.$data->id_tagihan); ?>" class="btn btn-primary btn-xs"><i class="fa fa-send"></i> Bayar</a>
+                    <span class="label label-danger">Ditolak</span>
+                  </td>
+                  <td>
+                    <a href="<?= site_url('customer/tagihan/bayar2/'.$data->id_tagihan); ?>" class="btn btn-primary btn-xs"><i class="fa fa-send"></i> Bayar</a>
                   </td>
                 </tr>
                 <?php endforeach; ?>
