@@ -21,7 +21,7 @@ class Tagihan_model extends CI_Model {
   }
   
   public function get_belum_bayar($id = null){
-    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan');
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan');
     $this->db->from('tb_pelanggan');
     $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
     $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
@@ -51,7 +51,7 @@ class Tagihan_model extends CI_Model {
   }
 
   public function get_tunggu_konfirm($id = null){
-    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_tagihan.foto, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan');
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan');
     $this->db->from('tb_pelanggan');
     $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
     $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
@@ -128,12 +128,15 @@ class Tagihan_model extends CI_Model {
   }
 
   public function transfer($post){
-    $params = array(
-      'status' => 'Menunggu Konfirmasi',
-      'foto'   => $post['image'],
-    );
     $id = $post['id_tagihan'];
-    $this->db->update('tb_tagihan', $params, ['id_tagihan' => $id]);
+    $params = array(
+      'id_tagihan' => $id,
+      'foto' => $post['image']
+    );
+    $this->db->update('tb_tagihan', ['status' => 'Menunggu Konfirmasi'], ['id_tagihan' => $id]);
+
+    // Insert ke tb_foto
+    $this->db->insert('tb_foto', $params);
   }
 
 

@@ -3,21 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pemakaian_model extends CI_Model {
 
-  public function no_pemakaian(){
-    $query = $this->db->query("SELECT MAX(MID(id_pakai,9,4)) AS no_pemakaian FROM tb_pakai WHERE MID(id_pakai,3,6) = DATE_FORMAT(CURDATE(), '%y%m%d') ");
+  // public function no_pemakaian(){
+  //   $query = $this->db->query("SELECT MAX(MID(id_pakai,9,4)) AS no_pemakaian FROM tb_pakai WHERE MID(id_pakai,3,6) = DATE_FORMAT(CURDATE(), '%y%m%d') ");
 
-    if($query->num_rows() > 0){
-      $row = $query->row();
-      $n = ((int)$row->no_pemakaian) + 1;
-      $no = sprintf("%'. 04d", $n);
-    }
-    else{
-      $no = '0001';
-    }
+  //   if($query->num_rows() > 0){
+  //     $row = $query->row();
+  //     $n = ((int)$row->no_pemakaian) + 1;
+  //     $no = sprintf("%'. 04d", $n);
+  //   }
+  //   else{
+  //     $no = '0001';
+  //   }
 
-    $pemakaian = "TR".date('ymd').$no;
-    return $pemakaian;
-  }
+  //   $pemakaian = "TR".date('ymd').$no;
+  //   return $pemakaian;
+  // }
 
   public function get($id = null){
     $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_bulan.id_bulan, tb_bulan.nama_bulan, tb_tagihan.status');

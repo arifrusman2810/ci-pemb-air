@@ -41,7 +41,7 @@
             <td><?= $data->pakai ?></td>
             <td><?= number_format($data->tagihan, 0, ',', '.') ?></td>
             <td>
-              <a href="<?= site_url('tagihan/bayar/'.$data->id_tagihan) ?>" class="btn btn-primary btn-xs"><i class="fa fa-send"></i> Bayar</a>
+              <a href="<?= site_url('tagihan/bayar/'.$data->id_tagihan) ?>" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Detail</a>
             </td>
           </tr>
           <?php endforeach; ?>

@@ -53,7 +53,14 @@
               </div>
             </div>
             <div class="col-md-6">
-            <img src="<?= base_url('uploads/'.$tagihan->foto) ?>" alt="" class="img-responsive">
+            <?php 
+            $id_tagihan = $tagihan->id_tagihan;
+            $query = $this->db->query("SELECT * FROM tb_foto WHERE id_tagihan = '$id_tagihan'");
+            $result = $query->result();
+            foreach($result as $result):
+            ?>
+              <img src="<?= base_url('uploads/'.$result->foto) ?>" alt="" class="img-responsive">
+            <?php endforeach; ?>
             </div>
           </div>
 
@@ -75,16 +82,31 @@
                   <input type='text' class="form-control" name="kembali" id="kembali" readonly/>
                 </div> -->
                 <hr>
+
+                <div class="form-group">
+                  <label for="">Status</label>
+                  <select name="status" id="" class="form-control" required>
+                    <option value="">Pilih Status</option>
+                    <option value="Lunas">Lunas</option>
+                    <option value="Tolak">Tolak</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="">Keterangan</label>
+                  <textarea name="keterangan" id="" class="form-control" row="4" col="3" placeholder="Keterangan..."></textarea>
+                </div>
+
+
                 <div class="form-group">
                   <small class="text-danger">
                     <i>
-                      <b>Warning : </b> Pastikan jumlah uang sesuai dengan tagihan! <br>
-                      Ketika di klik "konfirmasi" maka status tagihan akan menjadi lunas!
+                      <b>Warning : </b> Pastikan jumlah uang sesuai dengan tagihan!
                     </i>
                   </small>
                 </div>
                 <div class="form-group">
-                  <button type="submit" name="submit" class="btn btn-success btn-flat"> Konfirmasi</button>
+                  <button type="submit" name="submit" class="btn btn-success btn-flat"> Proses</button>
                   <a href="<?= site_url('tagihan/tungguKonfirm') ?>" class="btn btn-warning btn-flat"> Kembali</a>
                 </div>
               </form>
@@ -97,14 +119,3 @@
     </div>
   </div>
 </section>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#tagih, #bayar").keyup(function() {
-			var tagih  = $("#tagih").val();
-			var bayar = $("#bayar").val();
-			var kembali = parseInt(bayar) - parseInt(tagih);
-			$("#kembali").val(kembali);
-		});
-	});
-</script>

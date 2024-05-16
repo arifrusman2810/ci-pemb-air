@@ -15,14 +15,18 @@
   
   <div class="row">
     <div class="col-md-12">
-      <div class="panel panel-primary">
+      <div class="panel panel-danger">
         <div class="panel-heading">
-          <b>Pembayaran tagihan</b>
+          <b>Detail tagihan</b>
         </div>
         <div class="panel-body">
           <div class="table-responsive">
             <table class="table table-striped">
               <tbody>
+                <tr>
+                  <td>No Tagihan</td>                                          
+                  <td width="80%">: <?= $tagihan->id_pakai;?></td>
+                </tr>
                 <tr>
                   <td>ID | Nama Plg</td>                                          
                   <td width="80%">: <?= $tagihan->id_pelanggan;?> | <?= $tagihan->nama_pelanggan;?></td>
@@ -48,7 +52,7 @@
               </tbody>
             </table>
 
-            <form action="<?= site_url('tagihan/bayarProcess') ?>" method="POST">
+            <!-- <form action="<?= site_url('tagihan/bayarProcess') ?>" method="POST">
               <?php if($tagihan->status == 'Belum Bayar'): ?>
 
                 <div class="form-group">
@@ -70,7 +74,7 @@
                   <a href="<?= site_url('tagihan/belumBayar') ?>" class="btn btn-warning btn-flat"> Kembali</a>
                 </div>
               <?php endif; ?>
-            </form>
+            </form> -->
           </div>
         </div>
       </div>

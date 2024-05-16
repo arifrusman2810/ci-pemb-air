@@ -16,15 +16,31 @@ class Pembayaran_model extends CI_Model {
   }
   
   public function konfirm($post){
+    // echo $post['status'];
+    // die;
     $params = array(
       'id_tagihan' => $post['id_tagihan'],
       'tgl_bayar'  => date("Y-m-d"),
       'uang_bayar' => $post['tagih'],
       'kembali'    => 0,
     );
-    $this->db->insert('tb_pembayaran', $params);
+
+    $params2 = array(
+      'status'     => $post['status'],
+      'keterangan' => $post['keterangan']
+    );
+
     $id = $post['id_tagihan'];
-    $this->db->update('tb_tagihan', ['status' => 'Lunas'], ['id_tagihan' => $id]);
+
+
+    if($post['status'] == 'Tolak'){
+      $this->db->update('tb_tagihan', $params2, ['id_tagihan' => $id]);
+    }
+    elseif($post['status'] == 'Lunas'){
+      $this->db->insert('tb_pembayaran', $params);
+      $this->db->update('tb_tagihan', $params2, ['id_tagihan' => $id]);
+    }
+    
   }
 
 

@@ -76,11 +76,18 @@ class Tagihan extends CI_Controller {
     // die;
     $this->pembayaran_model->konfirm($post);
 
-    if($this->db->affected_rows()){
+    if($this->db->affected_rows() && $post['status'] == 'Lunas'){
       echo
         "<script>
           alert('Konfirmasi pembayaran berhasil');
           window.location = '".site_url('tagihan/lunas')."'
+        </script>";
+    }
+    elseif($this->db->affected_rows() && $post['status'] == 'Tolak'){
+      echo
+        "<script>
+          alert('Konfirmasi pembayaran ditolak');
+          window.location = '".site_url('tagihan/tolak')."'
         </script>";
     }
     else{
@@ -90,6 +97,11 @@ class Tagihan extends CI_Controller {
           window.location = '".site_url('tagihan/tungguKonfirm')."'
         </script>";
     }
+  }
+
+  public function tolak(){
+    echo "Tagihan ditolak!";
+    die;
   }
 
 

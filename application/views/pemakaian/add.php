@@ -26,7 +26,7 @@
           <form action="<?= site_url('pemakaian/addProcess') ?>" method="post">
             <div class="form-group">
               <label for="">ID Pemakaian</label>
-              <input type="text" name="id" value="<?= $id_pemakaian ?>" class="form-control" required readonly>
+              <input type="text" name="id" class="form-control" required>
             </div>
             <div class="form-group">
               <label for="">Nama Pelanggan *</label>

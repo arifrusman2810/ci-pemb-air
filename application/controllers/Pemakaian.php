@@ -19,7 +19,7 @@ class Pemakaian extends CI_Controller {
   }
 
   public function add(){
-    $data['id_pemakaian'] = $this->pemakaian_model->no_pemakaian();
+    // $data['id_pemakaian'] = $this->pemakaian_model->no_pemakaian();
     $data['pelanggan'] = $this->pelanggan_model->get()->result();
     $data['bulan'] = $this->pemakaian_model->get_bulan()->result();
     $this->load->view('templates/header');
