@@ -100,8 +100,17 @@ class Tagihan extends CI_Controller {
   }
 
   public function tolak(){
-    echo "Tagihan ditolak!";
-    die;
+    $data['tagihan'] = $this->tagihan_model->get_ditolak()->result();
+    $this->load->view('templates/header');
+    $this->load->view('tagihan/ditolak', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function detailTolak($id){
+    $data['tagihan'] = $this->tagihan_model->get_ditolak($id)->row();
+    $this->load->view('templates/header');
+    $this->load->view('tagihan/detail_tolak', $data);
+    $this->load->view('templates/footer');
   }
 
 
