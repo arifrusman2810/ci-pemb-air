@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2024 at 05:36 AM
+-- Generation Time: May 16, 2024 at 04:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.24
 
@@ -50,6 +50,30 @@ INSERT INTO `tb_bulan` (`id_bulan`, `nama_bulan`) VALUES
 ('J', 'Oktober'),
 ('K', 'November'),
 ('L', 'Desember');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_foto`
+--
+
+CREATE TABLE `tb_foto` (
+  `id_foto` int(11) NOT NULL,
+  `id_tagihan` int(11) NOT NULL,
+  `foto` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_foto`
+--
+
+INSERT INTO `tb_foto` (`id_foto`, `id_tagihan`, `foto`) VALUES
+(1, 84, 'trx240515-c2d6df11a1.jpg'),
+(2, 86, 'trx240516-8f5e68d18c.jpg'),
+(3, 85, 'trx240516-a0d59df1a9.jpg'),
+(4, 82, 'trx240516-7ff466cb74.jpg'),
+(5, 87, 'trx240516-a9c90beeaf.jpg'),
+(6, 87, 'trx240516-1f2b4f7f1c.jpg');
 
 -- --------------------------------------------------------
 
@@ -116,7 +140,13 @@ INSERT INTO `tb_pakai` (`id_pakai`, `id_pelanggan`, `bulan`, `tahun`, `awal`, `a
 ('TR2405090004', 'P004', 'A', '2023', 0, 25, 25),
 ('TR2405090005', 'P007', 'A', '2023', 0, 22, 22),
 ('TR2405090006', 'P008', 'A', '2023', 0, 20, 20),
-('TR2405090007', 'P001', 'B', '2023', 20, 40, 20);
+('TR2405090007', 'P001', 'B', '2023', 20, 40, 20),
+('TR2405100001', 'P001', 'C', '2023', 40, 52, 12),
+('TR2405100002', 'P002', 'B', '2023', 22, 40, 18),
+('TRX6700045005', 'P008', 'B', '2023', 20, 40, 20),
+('TRX6700045045', 'P003', 'B', '2023', 32, 60, 28),
+('TRX6700066001', 'P004', 'B', '2023', 25, 40, 15),
+('TRX670034002', 'P007', 'B', '2023', 22, 40, 18);
 
 -- --------------------------------------------------------
 
@@ -145,7 +175,8 @@ INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `no_hp`,
 ('P003', 'Candra', 'pati', '123', 'Aktif', 1, 'candra', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
 ('P004', 'Dedi', 'semarang', '087789987654', 'Aktif', 1, 'dedi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
 ('P007', 'Jarvis', 'Kamulan', '0567545', 'Aktif', 2, 'jarvis', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
-('P008', 'Friday', 'Kudus', '324343', 'Aktif', 1, 'friday123', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
+('P008', 'Friday', 'Kudus', '324343', 'Aktif', 1, 'friday123', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
+('P009', 'Sunday Green', 'Kukulma', '0674655656', 'Aktif', 1, 'sunday', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
 
 -- --------------------------------------------------------
 
@@ -170,7 +201,10 @@ INSERT INTO `tb_pembayaran` (`id_tagihan`, `tgl_bayar`, `uang_bayar`, `kembali`)
 (77, '2024-05-09', 50000, 2000),
 (75, '2024-05-09', 30000, 0),
 (81, '2024-05-09', 50000, 20000),
-(76, '2024-05-09', 33000, 0);
+(76, '2024-05-09', 33000, 0),
+(83, '2024-05-10', 30000, 3000),
+(78, '2024-05-10', 37500, 0),
+(87, '2024-05-16', 36000, 0);
 
 -- --------------------------------------------------------
 
@@ -183,21 +217,26 @@ CREATE TABLE `tb_tagihan` (
   `id_pakai` varchar(50) NOT NULL,
   `tagihan` int(11) NOT NULL,
   `status` char(50) NOT NULL DEFAULT 'Belum Bayar',
-  `foto` varchar(50) NOT NULL
+  `keterangan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_tagihan`
 --
 
-INSERT INTO `tb_tagihan` (`id_tagihan`, `id_pakai`, `tagihan`, `status`, `foto`) VALUES
-(75, 'TR2405090001', 30000, 'Lunas', 'trx240509-28f7303350.jpg'),
-(76, 'TR2405090002', 33000, 'Lunas', 'trx240509-83c39e2c74.jpg'),
+INSERT INTO `tb_tagihan` (`id_tagihan`, `id_pakai`, `tagihan`, `status`, `keterangan`) VALUES
+(75, 'TR2405090001', 30000, 'Lunas', ''),
+(76, 'TR2405090002', 33000, 'Lunas', ''),
 (77, 'TR2405090003', 48000, 'Lunas', ''),
-(78, 'TR2405090004', 37500, 'Belum Bayar', ''),
+(78, 'TR2405090004', 37500, 'Lunas', ''),
 (79, 'TR2405090005', 44000, 'Lunas', ''),
 (80, 'TR2405090006', 30000, 'Lunas', ''),
-(81, 'TR2405090007', 30000, 'Lunas', '');
+(81, 'TR2405090007', 30000, 'Lunas', ''),
+(82, 'TR2405100001', 18000, 'Tolak', 'Nominal transfer kurang 10rb, silahkan transfer lagi kekurangannya'),
+(83, 'TR2405100002', 27000, 'Lunas', ''),
+(85, 'TRX6700045005', 30000, 'Tolak', 'Nominal transfer kurang 10rb, silahkan transfer lagi kekurangannya'),
+(87, 'TRX670034002', 36000, 'Lunas', 'Ok'),
+(88, 'TRX6700066001', 22500, 'Belum Bayar', '');
 
 -- --------------------------------------------------------
 
@@ -232,6 +271,12 @@ INSERT INTO `tb_user` (`id_user`, `nama_user`, `username`, `password`, `level`, 
 --
 ALTER TABLE `tb_bulan`
   ADD PRIMARY KEY (`id_bulan`);
+
+--
+-- Indexes for table `tb_foto`
+--
+ALTER TABLE `tb_foto`
+  ADD PRIMARY KEY (`id_foto`);
 
 --
 -- Indexes for table `tb_info`
@@ -284,6 +329,12 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_foto`
+--
+ALTER TABLE `tb_foto`
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tb_info`
 --
 ALTER TABLE `tb_info`
@@ -299,7 +350,7 @@ ALTER TABLE `tb_layanan`
 -- AUTO_INCREMENT for table `tb_tagihan`
 --
 ALTER TABLE `tb_tagihan`
-  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
