@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
               <label for="">Telephon *</label>
-              <input type="text" name="phone" class="form-control" required>
+              <input type="number" name="phone" class="form-control" required>
             </div>
             <div class="form-group">
               <label for="">Pilih Layanan *</label>

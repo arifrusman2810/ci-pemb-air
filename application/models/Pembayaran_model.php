@@ -27,11 +27,11 @@ class Pembayaran_model extends CI_Model {
 
     $params2 = array(
       'status'     => $post['status'],
-      'keterangan' => $post['keterangan']
+      'keterangan' => $post['keterangan'],
+      'refund'     => $post['refund']
     );
 
     $id = $post['id_tagihan'];
-
 
     if($post['status'] == 'Tolak'){
       $this->db->update('tb_tagihan', $params2, ['id_tagihan' => $id]);

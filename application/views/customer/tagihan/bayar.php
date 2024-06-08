@@ -28,6 +28,10 @@
                   <td width="80%">: <?= $tagihan->id_pelanggan;?> | <?= $tagihan->nama_pelanggan;?></td>
                 </tr>
                 <tr>
+                  <td>Jenis Layanan</td>
+                  <td>: <?= $tagihan->layanan; ?></td>
+                </tr>
+                <tr>
                   <td>Bulan | Tahun</td>
                   <td>: <?= $tagihan->nama_bulan;?> - <?= $tagihan->tahun;?></td>
                 </tr>

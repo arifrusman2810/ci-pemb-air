@@ -76,12 +76,15 @@
                     <option value="Tolak">Tolak</option>
                   </select>
                 </div>
-
                 <div class="form-group">
                   <label for="">Keterangan</label>
                   <textarea name="keterangan" id="" class="form-control" row="4" col="3" placeholder="Keterangan..."></textarea>
                 </div>
-
+                <div class="form-group">
+                  <label for="">Refund</label>
+                  <input type="number" class="form-control" name="refund" placeholder="Refund...">
+                  <small class="text-danger"><i>Isi hanya jika ada kelebihan bayar!</i></small>
+                </div>
 
                 <div class="form-group">
                   <small class="text-danger">

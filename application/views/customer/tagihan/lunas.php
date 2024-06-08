@@ -29,6 +29,7 @@
                   <th>Pemakaian (M<sup>3</sup>)</th>
                   <th>Tagihan (Rp)</th>
                   <th>Tgl. Pembayaran</th>
+                  <th>Refund (Rp)</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -45,6 +46,7 @@
                   <td><?= $data->pakai ?></td>
                   <td><?= number_format($data->tagihan, 0, ',', '.') ?></td>
                   <td><?= date('d-M-Y', strtotime($data->tgl_bayar)) ?></td>
+                  <td><?= number_format($data->refund, 0, ',', '.') ?></td>
                   <td>
                   <a href="<?= site_url('customer/tagihan/cetak/'.$data->id_tagihan); ?>" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-print"></i> Cetak</a>
                   </td>

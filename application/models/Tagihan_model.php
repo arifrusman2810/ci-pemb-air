@@ -21,11 +21,12 @@ class Tagihan_model extends CI_Model {
   }
   
   public function get_belum_bayar($id = null){
-    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan');
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.id_pakai, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan, tb_layanan.layanan');
     $this->db->from('tb_pelanggan');
     $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
     $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
     $this->db->join('tb_bulan', 'tb_bulan.id_bulan = tb_pakai.bulan');
+    $this->db->join('tb_layanan', 'tb_layanan.id_layanan = tb_pelanggan.id_layanan');
     if($id != null){
       $this->db->where('tb_tagihan.id_tagihan', $id);
     }
@@ -38,7 +39,7 @@ class Tagihan_model extends CI_Model {
   }
 
   public function get_lunas(){
-    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan, tb_pembayaran.tgl_bayar');
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_tagihan.refund, tb_pakai.tahun, tb_pakai.pakai, tb_bulan.nama_bulan, tb_pembayaran.tgl_bayar');
     $this->db->from('tb_pelanggan');
     $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
     $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
@@ -118,7 +119,7 @@ class Tagihan_model extends CI_Model {
   }
 
   public function get_user_lunas($id){
-    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_pakai.pakai, tb_bulan.nama_bulan, tb_pembayaran.tgl_bayar');
+    $this->db->select('tb_pelanggan.id_pelanggan, tb_pelanggan.nama_pelanggan, tb_tagihan.id_tagihan, tb_tagihan.tagihan, tb_tagihan.status, tb_tagihan.refund, tb_pakai.tahun, tb_pakai.awal, tb_pakai.akhir, tb_pakai.pakai, tb_bulan.nama_bulan, tb_pembayaran.tgl_bayar');
     $this->db->from('tb_pelanggan');
     $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
     $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
