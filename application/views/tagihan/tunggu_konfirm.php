@@ -41,7 +41,7 @@
             <td><?= $data->pakai ?></td>
             <td><?= number_format($data->tagihan, 0, ',', '.') ?></td>
             <td>
-              <a href="<?= site_url('tagihan/konfirm/'.$data->id_tagihan) ?>" class="btn btn-primary btn-xs"><i class="fa fa-send"></i> Konfirm</a>
+              <a href="<?= site_url('tagihan/konfirm/'.$data->id_tagihan.'?id_pelanggan='.$data->id_pelanggan) ?>" class="btn btn-primary btn-xs"><i class="fa fa-send"></i> Konfirm</a>
             </td>
           </tr>
           <?php endforeach; ?>

@@ -22,7 +22,7 @@
         <div class="panel-body">
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="table-responsive">
                 <table class="table table-striped">
                   <tbody>
@@ -43,6 +43,17 @@
                       <td>: Rp. <?= number_format($tagihan->tagihan, 0, ',', '.'); ?>,-</td>
                     </tr>
                     <tr>
+                      <td>Refund Bulan Lalu</td>
+                      <td>: Rp. <?= number_format($total_refund, 0, ',', '.'); ?>,-</td>
+                    </tr>
+                    <tr>
+                      <?php 
+                      $total_bayar = $tagihan->tagihan - $total_refund;
+                      ?>
+                      <td>Tagihan yang harus dibayar</td>
+                      <th class="text-danger">: Rp. <?= number_format($total_bayar, 0, ',', '.'); ?>,-</th>
+                    </tr>
+                    <tr>
                       <td>Status</td>
                       <td>:
                         <span class="label label-danger"><?= $tagihan->status ?></span>
@@ -57,6 +68,7 @@
                 </div>
                 <div class="form-group">
                   <input type='hidden' class="form-control" name="tagih" id="tagih" value="<?= $tagihan->tagihan; ?>" readonly/>
+                  <input type='hidden' class="form-control" name="id_pelanggan" id="id_pelanggan" value="<?= $tagihan->id_pelanggan; ?>"/>
                 </div>
                 <!-- <div class="form-group">
                   <label>Uang Pembayaran (Rp)*</label>
@@ -102,7 +114,7 @@
 
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
             <?php 
             $id_tagihan = $tagihan->id_tagihan;
             $query = $this->db->query("SELECT * FROM tb_foto WHERE id_tagihan = '$id_tagihan'");

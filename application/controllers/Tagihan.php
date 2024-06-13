@@ -62,9 +62,12 @@ class Tagihan extends CI_Controller {
   }
 
   public function konfirm($id){
-    $data['tagihan'] = $this->tagihan_model->get_tunggu_konfirm($id)->row();
-    // print_r($data['tagihan']);
+    $id_pelanggan = $this->input->get('id_pelanggan');
+    // echo $id_pelanggan;
     // die;
+    $data['tagihan'] = $this->tagihan_model->get_tunggu_konfirm($id)->row();
+    $data['total_refund'] = $this->tagihan_model->get_refund($id_pelanggan);
+
     $this->load->view('templates/header');
     $this->load->view('tagihan/konfirm', $data);
     $this->load->view('templates/footer');
@@ -72,8 +75,13 @@ class Tagihan extends CI_Controller {
 
   public function konfirmProcess(){
     $post = $this->input->post(null, TRUE);
-    // print_r($post);
+    $id_pelanggan = $post['id_pelanggan'];
+    // echo $id_pelanggan;
     // die;
+
+    // Mereset refund menjadi 0
+    $this->tagihan_model->reset_refund($id_pelanggan);
+
     $this->pembayaran_model->konfirm($post);
 
     if($this->db->affected_rows() && $post['status'] == 'Lunas'){

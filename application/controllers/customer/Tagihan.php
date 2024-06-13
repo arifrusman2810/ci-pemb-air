@@ -44,6 +44,10 @@ class Tagihan extends CI_Controller {
 
   public function bayar($id){
     $data['tagihan'] = $this->tagihan_model->get_belum_bayar($id)->row();
+    $id_pelanggan = $this->session->userdata('user_id');
+    $data['total_refund'] = $this->tagihan_model->get_refund($id_pelanggan);
+    // print_r($data['total_refund']);
+    // die;
     $this->load->view('customer/templates/header');
     $this->load->view('customer/tagihan/bayar', $data);
     $this->load->view('customer/templates/footer');
