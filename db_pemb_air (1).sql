@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2024 at 04:17 AM
+-- Generation Time: Jun 13, 2024 at 04:43 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.24
 
@@ -77,7 +77,11 @@ INSERT INTO `tb_foto` (`id_foto`, `id_tagihan`, `foto`) VALUES
 (7, 88, 'trx240517-e9715e8fb6.jpg'),
 (8, 88, 'trx240517-c9040d6c01.jpg'),
 (9, 89, 'trx240606-d3343b6b46.jpg'),
-(10, 90, 'trx240607-6303f31f8b.jpg');
+(10, 90, 'trx240607-6303f31f8b.jpg'),
+(11, 91, 'trx240613-f63e29c192.jpg'),
+(12, 92, 'trx240613-c3b3b623d3.jpg'),
+(13, 93, 'trx240613-a4105132e2.jpg'),
+(14, 94, 'trx240613-a977b05667.jpg');
 
 -- --------------------------------------------------------
 
@@ -147,6 +151,10 @@ INSERT INTO `tb_pakai` (`id_pakai`, `id_pelanggan`, `bulan`, `tahun`, `awal`, `a
 ('TR2405090007', 'P001', 'B', '2023', 20, 40, 20),
 ('TR2405100001', 'P001', 'C', '2023', 40, 52, 12),
 ('TR2405100002', 'P002', 'B', '2023', 22, 40, 18),
+('TRX2222200045001', 'P007', 'C', '2023', 40, 60, 20),
+('TRX2400024001', 'P004', 'D', '2023', 60, 80, 20),
+('TRX240045001', 'P004', 'C', '2023', 40, 60, 20),
+('TRX655555045001', 'P007', 'D', '2023', 60, 80, 20),
 ('TRX6700045005', 'P008', 'B', '2023', 20, 40, 20),
 ('TRX6700045045', 'P003', 'B', '2023', 32, 60, 28),
 ('TRX6700055003', 'P003', 'C', '2023', 75, 102, 27),
@@ -213,7 +221,11 @@ INSERT INTO `tb_pembayaran` (`id_tagihan`, `tgl_bayar`, `uang_bayar`, `kembali`)
 (87, '2024-05-16', 36000, 0),
 (88, '2024-05-17', 22500, 0),
 (89, '2024-06-07', 22500, 0),
-(90, '2024-06-07', 40500, 0);
+(90, '2024-06-07', 40500, 0),
+(91, '2024-06-13', 30000, 0),
+(92, '2024-06-13', 30000, 0),
+(93, '2024-06-13', 40000, 0),
+(94, '2024-06-13', 40000, 0);
 
 -- --------------------------------------------------------
 
@@ -238,17 +250,21 @@ INSERT INTO `tb_tagihan` (`id_tagihan`, `id_pakai`, `tagihan`, `status`, `ketera
 (75, 'TR2405090001', 30000, 'Lunas', '', NULL),
 (76, 'TR2405090002', 33000, 'Lunas', '', NULL),
 (77, 'TR2405090003', 48000, 'Lunas', '', NULL),
-(78, 'TR2405090004', 37500, 'Lunas', '', NULL),
-(79, 'TR2405090005', 44000, 'Lunas', '', NULL),
+(78, 'TR2405090004', 37500, 'Lunas', '', 0),
+(79, 'TR2405090005', 44000, 'Lunas', '', 0),
 (80, 'TR2405090006', 30000, 'Lunas', '', NULL),
 (81, 'TR2405090007', 30000, 'Lunas', '', NULL),
 (82, 'TR2405100001', 18000, 'Tolak', 'Nominal transfer kurang 10rb, silahkan transfer lagi kekurangannya', NULL),
 (83, 'TR2405100002', 27000, 'Lunas', '', NULL),
 (85, 'TRX6700045005', 30000, 'Tolak', 'Nominal transfer kurang 10rb, silahkan transfer lagi kekurangannya', NULL),
-(87, 'TRX670034002', 36000, 'Lunas', 'Ok', NULL),
-(88, 'TRX6700066001', 22500, 'Lunas', 'Ok', NULL),
+(87, 'TRX670034002', 36000, 'Lunas', 'Ok', 0),
+(88, 'TRX6700066001', 22500, 'Lunas', 'Ok', 0),
 (89, 'TRX670077001', 22500, 'Lunas', 'Kelebihan bayar 5000', 5000),
-(90, 'TRX6700055003', 40500, 'Lunas', 'Ok', 0);
+(90, 'TRX6700055003', 40500, 'Lunas', 'Ok', 0),
+(91, 'TRX240045001', 30000, 'Lunas', 'Ada refund 6000', 0),
+(92, 'TRX2400024001', 30000, 'Lunas', 'OK', 0),
+(93, 'TRX2222200045001', 40000, 'Lunas', 'refund 8000', 0),
+(94, 'TRX655555045001', 40000, 'Lunas', 'refund 3000', 3000);
 
 -- --------------------------------------------------------
 
@@ -344,7 +360,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_foto`
 --
 ALTER TABLE `tb_foto`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_info`
@@ -362,7 +378,7 @@ ALTER TABLE `tb_layanan`
 -- AUTO_INCREMENT for table `tb_tagihan`
 --
 ALTER TABLE `tb_tagihan`
-  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_tagihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
