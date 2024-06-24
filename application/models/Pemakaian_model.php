@@ -34,7 +34,6 @@ class Pemakaian_model extends CI_Model {
 
   public function add($post){
     $params = array(
-      'id_pakai'     => $post['id'],
       'id_pelanggan' => $post['pelanggan'],
       'bulan'        => $post['bulan'],
       'tahun'        => $post['tahun'],
@@ -42,12 +41,19 @@ class Pemakaian_model extends CI_Model {
       'akhir'        => $post['akhir'],
       'pakai'        => $post['total'],
     );
-    $params2 = array(
-      'id_pakai' => $post['id'],
-      'tagihan'  => $post['harga']
-    );
     $this->db->insert('tb_pakai', $params);
-    $this->db->insert('tb_tagihan', $params2);
+
+    // Mengambil id_pakai yang baru saja dimasukkan
+    $id_pakai = $this->db->insert_id();
+    return $id_pakai;
+  }
+
+  public function add_tagihan($id, $harga){
+    $params = array(
+      'id_pakai' => $id,
+      'tagihan'  => $harga
+    );
+    $this->db->insert('tb_tagihan', $params);
   }
 
   public function delete($id){

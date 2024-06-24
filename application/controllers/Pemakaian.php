@@ -29,7 +29,10 @@ class Pemakaian extends CI_Controller {
 
   public function addProcess(){
     $post = $this->input->post(null, TRUE);
-    $this->pemakaian_model->add($post);
+    $id = $this->pemakaian_model->add($post);
+
+    $harga = $post['harga'];
+    $this->pemakaian_model->add_tagihan($id, $harga);
     // print_r($post);
     // die;
     if($this->db->affected_rows()){
