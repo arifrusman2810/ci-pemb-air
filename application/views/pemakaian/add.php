@@ -144,7 +144,7 @@
       if(total <= 10){
         harga = parseInt(total) * parseInt(tarif);
       }
-      if(total >= 10 && total <= 20){
+      if(total > 10 && total <= 20){
         harga = parseInt(total) * parseInt(tarif2);
       }
       if(total > 20){
