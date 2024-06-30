@@ -185,6 +185,15 @@ class Tagihan_model extends CI_Model {
     // }
   }
 
+  public function get_refund2($id) {
+    $this->db->select('SUM(tb_tagihan.refund) as total_refund');
+    $this->db->from('tb_pelanggan');
+    $this->db->join('tb_pakai', 'tb_pakai.id_pelanggan = tb_pelanggan.id_pelanggan');
+    $this->db->join('tb_tagihan', 'tb_tagihan.id_pakai = tb_pakai.id_pakai');
+    $this->db->where('tb_tagihan.id_pakai', $id);
+    return $this->db->get()->row()->total_refund;
+}
+
   public function reset_refund($id_pelanggan) {
     $this->db->set('refund', 0);
     $this->db->where('id_pakai IN (SELECT id_pakai FROM tb_pakai WHERE id_pelanggan = '. $this->db->escape($id_pelanggan) .')', NULL, FALSE);

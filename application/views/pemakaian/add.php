@@ -63,11 +63,14 @@
             </div>
 
             <div class="form-group">
-              <input type="hidden" class="form-control" name="tarif" id="tarif" value="" readonly>
+              <input type="text" class="form-control" name="tarif" id="tarif" value="" readonly>
+              <input type="text" class="form-control" name="tarif2" id="tarif2" value="" readonly>
+              <input type="text" class="form-control" name="tarif3" id="tarif3" value="" readonly>
             </div>
             
             <div class="form-group">
-              <input type="hidden" class="form-control" name="harga" id="harga" value="" readonly>
+              <label for="harga">Harga (Rp)</label>
+              <input type="text" class="form-control" name="harga" id="harga" value="" readonly>
             </div>
 
             <div class="form-group">
@@ -103,9 +106,25 @@
         type: 'POST',
         data: {'id_pelanggan':pelanggan},
         success: function(data){
-          $('#tarif').val(data);
+          // $('#tarif').val(data);
+
+          // Parse data yang diterima
+          var result = JSON.parse(data);
+
+          if (result.error) {
+            console.log(result.error);
+          }
+          else {
+            // Isi inputan dengan id tarif, tarif2, dan tarif3
+            $('#tarif').val(result.tarif);
+            $('#tarif2').val(result.tarif2);
+            $('#tarif3').val(result.tarif3);
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log("Request failed: " + textStatus + ", " + errorThrown);
         }
-		});  
+		  });  
 	});
 
   $(document).ready(function() {
@@ -118,7 +137,28 @@
 
       // Menghitung tarif pemakaian
 			var tarif = $("#tarif").val();
-			var harga = parseInt(total) * parseInt(tarif);
+			var tarif2 = $("#tarif2").val();
+			var tarif3 = $("#tarif3").val();
+
+      // var harga = 0;
+      if(total <= 10){
+        harga = parseInt(total) * parseInt(tarif);
+      }
+      if(total >= 10 && total <= 20){
+        harga = parseInt(total) * parseInt(tarif2);
+      }
+      if(total > 20){
+        harga = parseInt(total) * parseInt(tarif3);
+      }
+
+      // Periksa apakah semua tarif adalah 0
+      if (tarif == 0 && tarif2 == 0 && tarif3 == 0) {
+        $("#harga").prop("readonly", false);
+      } else {
+        $("#harga").prop("readonly", true);
+        $("#harga").val(harga);
+      }
+    
 			$("#harga").val(harga);
       });
 		});

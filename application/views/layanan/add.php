@@ -29,8 +29,16 @@
               <input type="text" name="layanan" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="">Tarif (Rp)*</label>
-              <input type="number" name="tarif" class="form-control" required>
+              <label for="">Tarif pemakaian min 10M <sup>3</sup> (Rp)*</label>
+              <input type="number" name="tarif" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Tarif2 (Rp) pemakaian 11 - 20M <sup>3</sup> (Rp)*</label>
+              <input type="number" name="tarif2" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Tarif3 (Rp) pemakaian diatas 20M <sup>3</sup> (Rp)*</label>
+              <input type="number" name="tarif3" class="form-control">
             </div>
             <div class="form-group">
               <button type="submit" name="submit" class="btn btn-success btn-flat"><i class="fa fa-paper-plane"></i> Save</button>

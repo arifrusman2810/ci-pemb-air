@@ -29,6 +29,8 @@ class Pemakaian extends CI_Controller {
 
   public function addProcess(){
     $post = $this->input->post(null, TRUE);
+    // print_r($post);
+    // die;
     $id = $this->pemakaian_model->add($post);
 
     $harga = $post['harga'];
@@ -94,9 +96,29 @@ class Pemakaian extends CI_Controller {
 
   public function getTarif(){
     $id = $this->input->post('id_pelanggan');
-    $query = $this->db->query("SELECT tarif FROM tb_layanan INNER JOIN tb_pelanggan ON tb_pelanggan.id_layanan = tb_layanan.id_layanan WHERE tb_pelanggan.id_pelanggan = '$id'");
-    $result = $query->row();
-    echo $result->tarif;
+    $query = $this->db->query("SELECT tarif, tarif2, tarif3 FROM tb_layanan INNER JOIN tb_pelanggan ON tb_pelanggan.id_layanan = tb_layanan.id_layanan WHERE tb_pelanggan.id_pelanggan = '$id'");
+    // $result = $query->row();
+    // echo $result->tarif;
+
+    if ($query->num_rows() > 0) {
+      $result = $query->row();
+      $tarif = $result->tarif;
+      $tarif2 = $result->tarif2;
+      $tarif3 = $result->tarif3;
+      
+      // Misalnya Anda ingin mengembalikan nilai-nilai ini dalam bentuk array
+      echo json_encode(array(
+        'tarif' => $tarif,
+        'tarif2' => $tarif2,
+        'tarif3' => $tarif3
+      ));
+    }
+    else {
+      // Jika tidak ada hasil yang ditemukan, Anda bisa mengembalikan respons yang sesuai
+      echo json_encode(array(
+        'error' => 'No data found'
+      ));
+  }
   }
 
 

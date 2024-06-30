@@ -16,6 +16,8 @@ class Layanan_model extends CI_Model {
     $params = array(
       'layanan' => $post['layanan'],
       'tarif'   => $post['tarif'],
+      'tarif2'  => $post['tarif2'],
+      'tarif3'  => $post['tarif3'],
     );
     $this->db->insert('tb_layanan', $params);
   }
@@ -25,6 +27,8 @@ class Layanan_model extends CI_Model {
     $params = array(
       'layanan' => $post['layanan'],
       'tarif'   => $post['tarif'],
+      'tarif2'  => $post['tarif2'],
+      'tarif3'  => $post['tarif3'],
     );
     $this->db->where('id_layanan', $id);
     $this->db->update('tb_layanan', $params);
