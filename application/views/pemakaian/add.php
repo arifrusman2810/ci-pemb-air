@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
               <label for="">Tahun</label>
-              <input type="text" name="tahun" class="form-control" required>
+              <input type="number" name="tahun" class="form-control" required>
             </div>
             <div class="form-group">
               <label for="">Meteran Bulan Lalu (M<sup>3</sup>)</label>
@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
               <label for="">Meteran Bulan Ini (M<sup>3</sup>)*</label>
-              <input type="text" name="akhir" id="akhir" class="form-control" required>
+              <input type="number" min="0" name="akhir" id="akhir" class="form-control" required>
               <small class="text-danger"><i>Inputan harus lebih besar dari meteran bulan lalu!</i></small>
             </div>
             <div class="form-group">
@@ -63,9 +63,9 @@
             </div>
 
             <div class="form-group">
-              <input type="hidden" class="form-control" name="tarif" id="tarif" value="" readonly>
-              <input type="hidden" class="form-control" name="tarif2" id="tarif2" value="" readonly>
-              <input type="hidden" class="form-control" name="tarif3" id="tarif3" value="" readonly>
+              <input type="text" class="form-control" name="tarif" id="tarif" value="" readonly>
+              <input type="text" class="form-control" name="tarif2" id="tarif2" value="" readonly>
+              <input type="text" class="form-control" name="tarif3" id="tarif3" value="" readonly>
             </div>
             
             <div class="form-group">
@@ -141,14 +141,19 @@
 			var tarif3 = $("#tarif3").val();
 
       // var harga = 0;
-      if(total <= 10){
+      if(total <= 15){
         harga = parseInt(total) * parseInt(tarif);
       }
-      if(total > 10 && total <= 20){
-        harga = parseInt(total) * parseInt(tarif2);
+      if(total > 15 && total <= 20){
+        harga1 = 10 * parseInt(tarif);
+        harga2 = (parseInt(total) - 10) * parseInt(tarif2);
+        harga = harga1 + harga2;
       }
       if(total > 20){
-        harga = parseInt(total) * parseInt(tarif3);
+        harga1 = 10 * parseInt(tarif);
+        harga2 = 10 * parseInt(tarif2);
+        harga3 = (parseInt(total) - 20) * parseInt(tarif3);
+        harga = harga1 + harga2 + harga3;
       }
 
       // Periksa apakah semua tarif adalah 0

@@ -49,21 +49,33 @@ class Pelanggan extends CI_Controller {
 
   public function addProcess(){
     $post = $this->input->post(null, TRUE);
-    $this->pelanggan_model->add($post);
 
-    if($this->db->affected_rows()){
+    // Cek duplikasi id
+    $query = $this->pelanggan_model->check_id($post['id']);
+    if($query->num_rows() > 0){
       echo
         "<script>
-          alert('Data berhasil ditambahkan');
-          window.location = '".site_url('pelanggan')."'
+          alert('ID sudah dipakai!');
+          window.location = '".site_url('pelanggan/add')."'
         </script>";
     }
     else{
-      echo
-        "<script>
-          alert('Gagal tambah data!');
-          window.location = '".site_url('pelanggan/add')."'
-        </script>";
+      $this->pelanggan_model->add($post);
+  
+      if($this->db->affected_rows()){
+        echo
+          "<script>
+            alert('Data berhasil ditambahkan');
+            window.location = '".site_url('pelanggan')."'
+          </script>";
+      }
+      else{
+        echo
+          "<script>
+            alert('Gagal tambah data!');
+            window.location = '".site_url('pelanggan/add')."'
+          </script>";
+      }
     }
   }
 

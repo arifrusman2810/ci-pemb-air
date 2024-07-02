@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="<?= base_url('assets') ?>/dist/css/AdminLTE.min.css">
 
   <link rel="stylesheet" href="<?= base_url('assets') ?>/plugins/iCheck/square/blue.css">
-
+  
+  <!-- CSS custom -->
+  <!-- <link rel="stylesheet" href="<?= base_url('assets') ?>/dist/css/style.css"> -->
 
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -28,6 +30,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
+      <img src="<?= base_url('assets/') ?>dist/img/icon-pdam2.png" width="60px" class="" alt="User Image">
       <a href=""><b>App</b>Tagihan Air</a>
     </div>
 

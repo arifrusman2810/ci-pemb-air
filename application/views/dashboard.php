@@ -1,6 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
+    <img width="50px" src="<?= base_url('assets/') ?>dist/img/icon-pdam2.png" class="" alt="User Image">
     Dashboard
     <small>Control panel</small>
   </h1>
