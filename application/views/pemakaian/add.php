@@ -63,9 +63,9 @@
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" name="tarif" id="tarif" value="" readonly>
-              <input type="text" class="form-control" name="tarif2" id="tarif2" value="" readonly>
-              <input type="text" class="form-control" name="tarif3" id="tarif3" value="" readonly>
+              <input type="hidden" class="form-control" name="tarif" id="tarif" value="" readonly>
+              <input type="hidden" class="form-control" name="tarif2" id="tarif2" value="" readonly>
+              <input type="hidden" class="form-control" name="tarif3" id="tarif3" value="" readonly>
             </div>
             
             <div class="form-group">
