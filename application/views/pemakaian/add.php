@@ -63,9 +63,9 @@
             </div>
 
             <div class="form-group">
-              <input type="hidden" class="form-control" name="tarif" id="tarif" value="" readonly>
-              <input type="hidden" class="form-control" name="tarif2" id="tarif2" value="" readonly>
-              <input type="hidden" class="form-control" name="tarif3" id="tarif3" value="" readonly>
+              <input type="text" class="form-control" name="tarif" id="tarif" value="" readonly>
+              <input type="text" class="form-control" name="tarif2" id="tarif2" value="" readonly>
+              <input type="text" class="form-control" name="tarif3" id="tarif3" value="" readonly>
             </div>
             
             <div class="form-group">
@@ -142,7 +142,10 @@
 
       // var harga = 0;
       if(total <= 15){
-        harga = parseInt(total) * parseInt(tarif);
+        harga1 = 10 * parseInt(tarif);
+        harga2 = 5 * parseInt(tarif2);
+        // harga = parseInt(total) * parseInt(tarif);
+        harga = harga1 + harga2;
       }
       if(total > 15 && total <= 20){
         harga1 = 10 * parseInt(tarif);
