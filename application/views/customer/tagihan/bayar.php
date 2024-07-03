@@ -43,13 +43,23 @@
                   <td>Tagihan</td>
                   <td>: Rp. <?= number_format($tagihan->tagihan, 0, ',', '.'); ?>,-</td>
                 </tr>
+
+                <tr>
+                  <td>Biaya Admin</td>
+                  <td>: Rp. 3500,-</td>
+                </tr>
+                <tr>
+                  <td>Jaminan Langganan</td>
+                  <td>: Rp. 4000,-</td>
+                </tr>
+
                 <tr>
                   <td>Refund bln lalu</td>
                   <td>: Rp. <?= number_format($total_refund, 0, ',', '.'); ?>,-</td>
                 </tr>
                 <tr>
                   <?php 
-                  $total_bayar = $tagihan->tagihan - $total_refund
+                  $total_bayar = ($tagihan->tagihan + 3500 + 4000) - $total_refund
                   ?>
                   <td>Tagihan yang harus dibayar</td>
                   <th class="text-danger">: Rp. <?= number_format($total_bayar, 0, ',', '.'); ?>,-</th>

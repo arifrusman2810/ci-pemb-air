@@ -21,11 +21,12 @@ class Auth extends CI_Controller {
         'status'   => $row->status,
       );
       $this->session->set_userdata($params);
-      echo
-      "<script>
-        alert('Selamat, login berhasil');
-        window.location = '" .site_url('customer/dashboard'). "'
-      </script>";
+      return redirect('customer/dashboard');
+      // echo
+      // "<script>
+      //   alert('Selamat, login berhasil');
+      //   window.location = '" .site_url('customer/dashboard'). "'
+      // </script>";
     }
     else{
       echo
